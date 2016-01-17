@@ -1,0 +1,9 @@
+django==1.9
+lxml
+requests
+pyyaml
+pytest-django
+celery
+redis
+factory-boy
+mysqlclient

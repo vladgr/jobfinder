@@ -1,0 +1,53 @@
+United States;us
+Argentina;ar
+Australia;au
+Austria;at
+Bahrain;bh
+Belgium;be
+Brazil;br
+Canada;ca
+Chile;cl
+China;cn
+Colombia;co
+Czech Republic;cz
+Denmark;dk
+Finland;fi
+France;fr
+Germany;de
+Greece;gr
+Hong Kong;hk
+Hungary;hu
+India;in
+Indonesia;id
+Ireland;ie
+Israel;il
+Italy;it
+Japan;jp
+Korea;kr
+Kuwait;kw
+Luxembourg;lu
+Malaysia;my
+Mexico;mx
+Netherlands;nl
+New Zealand;nz
+Norway;no
+Oman;om
+Pakistan;pk
+Peru;pe
+Philippines;ph
+Poland;pl
+Portugal;pt
+Qatar;qa
+Romania;ro
+Russia;ru
+Saudi Arabia;sa
+Singapore;sg
+South Africa;za
+Spain;es
+Sweden;se
+Switzerland;ch
+Taiwan;tw
+Turkey;tr
+United Arab Emirates;ae
+United Kingdom;gb
+Venezuela;ve

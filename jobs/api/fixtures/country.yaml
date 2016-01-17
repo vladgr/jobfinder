@@ -1,0 +1,265 @@
+- model: api.country
+  pk: 1
+  fields:
+    code: "us"
+    name: "United States"
+- model: api.country
+  pk: 2
+  fields:
+    code: "ar"
+    name: "Argentina"
+- model: api.country
+  pk: 3
+  fields:
+    code: "au"
+    name: "Australia"
+- model: api.country
+  pk: 4
+  fields:
+    code: "at"
+    name: "Austria"
+- model: api.country
+  pk: 5
+  fields:
+    code: "bh"
+    name: "Bahrain"
+- model: api.country
+  pk: 6
+  fields:
+    code: "be"
+    name: "Belgium"
+- model: api.country
+  pk: 7
+  fields:
+    code: "br"
+    name: "Brazil"
+- model: api.country
+  pk: 8
+  fields:
+    code: "ca"
+    name: "Canada"
+- model: api.country
+  pk: 9
+  fields:
+    code: "cl"
+    name: "Chile"
+- model: api.country
+  pk: 10
+  fields:
+    code: "cn"
+    name: "China"
+- model: api.country
+  pk: 11
+  fields:
+    code: "co"
+    name: "Colombia"
+- model: api.country
+  pk: 12
+  fields:
+    code: "cz"
+    name: "Czech Republic"
+- model: api.country
+  pk: 13
+  fields:
+    code: "dk"
+    name: "Denmark"
+- model: api.country
+  pk: 14
+  fields:
+    code: "fi"
+    name: "Finland"
+- model: api.country
+  pk: 15
+  fields:
+    code: "fr"
+    name: "France"
+- model: api.country
+  pk: 16
+  fields:
+    code: "de"
+    name: "Germany"
+- model: api.country
+  pk: 17
+  fields:
+    code: "gr"
+    name: "Greece"
+- model: api.country
+  pk: 18
+  fields:
+    code: "hk"
+    name: "Hong Kong"
+- model: api.country
+  pk: 19
+  fields:
+    code: "hu"
+    name: "Hungary"
+- model: api.country
+  pk: 20
+  fields:
+    code: "in"
+    name: "India"
+- model: api.country
+  pk: 21
+  fields:
+    code: "id"
+    name: "Indonesia"
+- model: api.country
+  pk: 22
+  fields:
+    code: "ie"
+    name: "Ireland"
+- model: api.country
+  pk: 23
+  fields:
+    code: "il"
+    name: "Israel"
+- model: api.country
+  pk: 24
+  fields:
+    code: "it"
+    name: "Italy"
+- model: api.country
+  pk: 25
+  fields:
+    code: "jp"
+    name: "Japan"
+- model: api.country
+  pk: 26
+  fields:
+    code: "kr"
+    name: "Korea"
+- model: api.country
+  pk: 27
+  fields:
+    code: "kw"
+    name: "Kuwait"
+- model: api.country
+  pk: 28
+  fields:
+    code: "lu"
+    name: "Luxembourg"
+- model: api.country
+  pk: 29
+  fields:
+    code: "my"
+    name: "Malaysia"
+- model: api.country
+  pk: 30
+  fields:
+    code: "mx"
+    name: "Mexico"
+- model: api.country
+  pk: 31
+  fields:
+    code: "nl"
+    name: "Netherlands"
+- model: api.country
+  pk: 32
+  fields:
+    code: "nz"
+    name: "New Zealand"
+- model: api.country
+  pk: 33
+  fields:
+    code: "no"
+    name: "Norway"
+- model: api.country
+  pk: 34
+  fields:
+    code: "om"
+    name: "Oman"
+- model: api.country
+  pk: 35
+  fields:
+    code: "pk"
+    name: "Pakistan"
+- model: api.country
+  pk: 36
+  fields:
+    code: "pe"
+    name: "Peru"
+- model: api.country
+  pk: 37
+  fields:
+    code: "ph"
+    name: "Philippines"
+- model: api.country
+  pk: 38
+  fields:
+    code: "pl"
+    name: "Poland"
+- model: api.country
+  pk: 39
+  fields:
+    code: "pt"
+    name: "Portugal"
+- model: api.country
+  pk: 40
+  fields:
+    code: "qa"
+    name: "Qatar"
+- model: api.country
+  pk: 41
+  fields:
+    code: "ro"
+    name: "Romania"
+- model: api.country
+  pk: 42
+  fields:
+    code: "ru"
+    name: "Russia"
+- model: api.country
+  pk: 43
+  fields:
+    code: "sa"
+    name: "Saudi Arabia"
+- model: api.country
+  pk: 44
+  fields:
+    code: "sg"
+    name: "Singapore"
+- model: api.country
+  pk: 45
+  fields:
+    code: "za"
+    name: "South Africa"
+- model: api.country
+  pk: 46
+  fields:
+    code: "es"
+    name: "Spain"
+- model: api.country
+  pk: 47
+  fields:
+    code: "se"
+    name: "Sweden"
+- model: api.country
+  pk: 48
+  fields:
+    code: "ch"
+    name: "Switzerland"
+- model: api.country
+  pk: 49
+  fields:
+    code: "tw"
+    name: "Taiwan"
+- model: api.country
+  pk: 50
+  fields:
+    code: "tr"
+    name: "Turkey"
+- model: api.country
+  pk: 51
+  fields:
+    code: "ae"
+    name: "United Arab Emirates"
+- model: api.country
+  pk: 52
+  fields:
+    code: "gb"
+    name: "United Kingdom"
+- model: api.country
+  pk: 53
+  fields:
+    code: "ve"
+    name: "Venezuela"

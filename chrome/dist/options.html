@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jobs Finder Options</title>
+    <style>
+
+        .row{margin-top:10px;}
+        .row label{width:80px;display: inline-block;}
+        .row input{width:300px;}
+        button#save {margin:10px 0 0 85px;}
+    </style>
+</head>
+<body>
+
+
+<div class="row">
+    <label>API token:</label> 
+    <input id="token" type="text" value="" />    
+</div>
+
+<div class="row">
+    <label>API site:</label> 
+    <input id="apiSite" type="text" value="" />    
+</div>
+
+<button id="save">Save</button>
+<span id="status"></span>
+
+<script src="js/options.js"></script>
+</body>
+</html>

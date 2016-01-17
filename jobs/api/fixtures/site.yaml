@@ -1,0 +1,10 @@
+- model: api.site
+  pk: 1
+  fields: 
+    code: Indeed
+    name: Indeed
+- model: api.site
+  pk: 2
+  fields: 
+    code: Upwork
+    name: Upwork

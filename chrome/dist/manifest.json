@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+  "name": "Jobs Finder",
+  "version": "1.0",
+  "description": "Test",
+
+  "background": {
+    "persistent": false,
+    "scripts": ["js/background.js"]
+  },
+
+  "options_page": "options.html",
+
+  "content_scripts": [{
+    "matches": [
+        "*://www.upwork.com/jobs*"
+    ],
+    "js": ["js/content.js"],
+    "run_at": "document_end"
+  }],
+  
+  "icons": {
+    "16": "img/icon16.png",   
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  },
+
+  "browser_action": {
+    "default_title": "Jobs Finder",
+    "default_icon": "img/icon16.png"
+  },
+
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "notifications",
+    "storage",
+    "alarms"
+  ]
+ 
+  
+}
+

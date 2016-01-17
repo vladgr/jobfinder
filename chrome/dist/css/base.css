@@ -1,0 +1,170 @@
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/roboto-condensed.ttf') format('truetype');
+    font-weight:normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('../fonts/roboto-boldcondensed.ttf') format('truetype');
+    font-weight:bold;
+}
+
+@font-face {
+    font-family: 'Roboto-Italic';
+    src: url('../fonts/roboto-condenseditalic.ttf') format('truetype');
+    font-style: italic;
+}
+
+.clear{clear:both;}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+input, select, textarea {outline: none;}
+
+body {
+  background: #fff;
+  font-family: "Roboto";
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  color:#444;
+}
+
+b {font-family: "Roboto-Bold";}
+i {font-family: "Roboto-Italic";}
+
+a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.job_description{
+  left:30px;
+  top:100px;
+  position:absolute;
+  font-size:14px; 
+  width:50%;
+  background-color: #444;
+  opacity:0.9;
+  color:#f1f1f1;
+  padding:20px;
+  max-height: 80%;
+  overflow-y: scroll;
+}
+
+.job_description span.highlight_word{
+  background-color: #f1f1f1;
+  color:#444;
+  padding:0 3px 0 3px;
+}
+
+.app{
+  margin: 10px 30px 20px 30px;
+}
+
+.app .menu{}
+.app .menu .item{
+  font-size: 1.3em;
+  line-height: 1.3em;
+  display: inline-block;
+  margin-right:20px;
+  cursor: pointer;
+}
+
+.app .menu .item.active{
+  border-bottom: 1px dotted #444;
+  padding-bottom: 0;
+}
+
+.app .keywords{
+  margin-top: 5px;
+  border-bottom:1px solid #ccc;
+}
+
+.app .keywords .item{
+  color:#999;
+  display: inline-block;
+  margin-right: 10px;
+  cursor:pointer;
+  padding:0 7px;
+}
+
+.app .keywords .item.active{
+  font-family: "Roboto-Bold";
+  border-top:1px solid #ccc;
+  border-left:1px solid #ccc;
+  border-right:1px solid #ccc;
+}
+
+.app .keywords .item span.quantity{
+  background-color: #999;
+  color:#f1f1f1;
+  padding:0 4px;
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 0.7em;
+}
+
+.app .jobs{}
+
+.app .jobs table{
+  width: 100%;
+  font-size: 0.8em;
+  border-spacing: 0;
+  padding:0;
+}
+
+.app .jobs table tr:nth-child(2n){
+  background-color: #f1f1f1;
+  border:0;
+} 
+
+.app .jobs table tr.featured{
+  background-color: #D0F6DD;
+}
+
+.app .jobs table tr.notviewed td:first-of-type{
+  background-color: #C4E6F8;
+}
+
+.app .jobs table tr:hover{
+  background-color: #C4E6F8;
+}
+
+.app .jobs table tr td{
+  border:0;
+  padding: 2px 5px;
+}
+
+.app .jobs table td.jobtitle{
+  cursor:pointer;
+}
+
+.app .jobs table td i.fa{
+  font-size: 1.2em;
+  display: inline-block;
+  margin-left: 1px;
+  cursor:pointer;
+}
+
+.app .jobs table td i.fa.del{
+  color:#ff3333;
+}
+
+.app .jobs table td i.fa.url{
+  color:#2784EF;
+}
+
+.app .jobs table td i.fa.featured{
+  color:#008000;
+}
+
+.app .jobs table tr td.ico{
+  width:30px;
+}

@@ -1,0 +1,110 @@
+# Indeed filters
+- model: api.filter
+  pk: 1
+  fields:
+    site_id: 1
+    code: l
+    value: ""
+    info: 'Location. Use a postal code or a "city, state/province/region" combination.'
+- model: api.filter
+  pk: 2
+  fields:
+    site_id: 1
+    code: sort
+    value: date
+    info: Sort by relevance or date. Default is relevance.
+- model: api.filter
+  pk: 3
+  fields:
+    site_id: 1
+    code: radius
+    value: ""
+    info: Distance from search location. Default is 25.
+- model: api.filter
+  pk: 4
+  fields:
+    site_id: 1
+    code: st
+    value: ""
+    info: 'Site type. For jobs from direct employer websites use "employer".'
+- model: api.filter
+  pk: 5
+  fields:
+    site_id: 1
+    code: jt
+    value: ""
+    info: 'Job type. Allowed values: "fulltime", "parttime", "contract", "internship", "temporary".'
+- model: api.filter
+  pk: 6
+  fields:
+    site_id: 1
+    code: limit
+    value: 25
+    info: Maximum number of results returned per query. Default is 10
+- model: api.filter
+  pk: 7
+  fields:
+    site_id: 1
+    code: fromage
+    value: 1
+    info: Number of days back to search.
+- model: api.filter
+  pk: 8
+  fields:
+    site_id: 1
+    code: chnl
+    value: ""
+    info: Channel Name. Group API requests to a specific channel
+- model: api.filter
+  pk: 9
+  fields:
+    site_id: 1
+    code: userip
+    value: ""
+    info: The IP number of the end-user to whom the job results will be displayed. This field is required.
+- model: api.filter
+  pk: 10
+  fields:
+    site_id: 1
+    code: useragent
+    value: ""
+    info: The User-Agent (browser) of the end-user to whom the job results will be displayed.
+- model: api.filter
+  pk: 11
+  fields:
+    site_id: 1
+    code: v
+    value: 2
+    info: Version.
+- model: api.filter
+  pk: 12
+  fields:
+    site_id: 1
+    code: format
+    value: json
+    info: Format. Which output format of the API you wish to use. 
+- model: api.filter
+  pk: 13
+  fields:
+    site_id: 2
+    code: spent
+    value: 100
+    info: Spent more than or equal.
+    type: 2
+- model: api.filter
+  pk: 14
+  fields:
+    site_id: 2
+    code: budget
+    value: 100
+    info: Budget more than or equal.
+    type: 2
+- model: api.filter
+  pk: 15
+  fields:
+    site_id: 2
+    code: avh
+    value: 15
+    info: Average hour price more than or equal.
+    type: 2
+   

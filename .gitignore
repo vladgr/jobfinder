@@ -1,0 +1,15 @@
+*.pyc
+*.~
+__pycache__/
+node_modules/
+
+/static/
+
+jobs/api/migrations/
+jobs/jobs/settings/data.json
+jobs/jobs/uwsgi.ini
+jobs/run
+jobs/celery
+
+chrome/src/js/chrome/test.js
+chrome/dist/js/test.js

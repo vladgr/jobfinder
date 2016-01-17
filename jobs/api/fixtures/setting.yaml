@@ -1,0 +1,8 @@
+- model: api.setting
+  pk: 1
+  fields: 
+    site_id: 1 
+    code: countries
+    value: "au,at,be,ca,de,fr,il,nl,no,ru,ch,se,ae,gb,us"
+    info: "List of countries, automatically added to Indeed Keyword. (Many-to-Many Keyword-Country)" 
+    type: 1
