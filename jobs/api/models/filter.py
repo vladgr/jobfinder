@@ -15,6 +15,17 @@ class Filter(models.Model):
         app_label = 'api'
         ordering = ['site_id']
 
+    def __str__(self):
+        return self.code
+
+    @staticmethod
+    def get_upwork_filters():
+        d = {}
+        d['avh'] = int(Filter.objects.get(code='avh').value)
+        d['budget'] = int(Filter.objects.get(code='budget').value)
+        d['spent'] = int(Filter.objects.get(code='spent').value)
+        return d
+
 
 @admin.register(Filter)
 class FilterAdmin(admin.ModelAdmin):

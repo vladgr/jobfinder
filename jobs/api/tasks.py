@@ -8,10 +8,13 @@ import api.bm as models
 
 
 @periodic_task(run_every=crontab(minute='10', hour='*'))
-def fetch_jobs():
+def fetch_indeed():
     p = ProcessIndeed()
     p.process()
 
+
+@periodic_task(run_every=crontab(minute='*/3', hour='*'))
+def fetch_upwork():
     p = ProcessUpwork()
     p.process()
 

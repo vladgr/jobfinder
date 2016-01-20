@@ -1,3 +1,4 @@
+import redis
 from django.db import models
 from django.db.models import Q
 from django.contrib import admin
@@ -5,6 +6,11 @@ from django.contrib import admin
 from .country import Country
 from .keyword import Keyword
 from .filter import Filter
+
+# Set flag in Redis when new jobs arrive.
+# Chrome extension checks for new jobs.
+rs = redis.Redis(host='127.0.0.1', port=6379, db=0)
+new_jobs = 'new_jobs'
 
 
 class Job(models.Model):
@@ -50,6 +56,23 @@ class Job(models.Model):
             'job_model': job_model,
             'countries': Country.get_countries()
         }
+
+    @staticmethod
+    def mark_new_jobs():
+        rs.set(new_jobs, 1)
+
+    @staticmethod
+    def check_new_jobs():
+        value = rs.get(new_jobs)
+        if value is None:
+            return False
+
+        value = int(value)
+        if value == 0:
+            return False
+
+        rs.set(new_jobs, 0)
+        return True
 
 
 class SourceIndeed(models.Model):
@@ -101,16 +124,26 @@ class JobUpwork(Job):
     def __str__(self):
         return self.jobtitle
 
+    def check_filters(self):
+        d = Filter.get_upwork_filters()
+        if self.avg_hour_price > 0 and self.avg_hour_price < d['avh']:
+            return False
+
+        if self.budget > 0 and self.budget < d['budget']:
+            return False
+
+        if self.total_spent < d['spent']:
+            return False
+
+        return True
+
     @staticmethod
     def get_query():
         """Returns custom query"""
-        avh = int(Filter.objects.get(code='avh').value)
-        budget = int(Filter.objects.get(code='budget').value)
-        spent = int(Filter.objects.get(code='spent').value)
-
-        query = Q(avg_hour_price=0) | Q(avg_hour_price__gte=avh)
-        query &= Q(budget=0) | Q(budget__gte=budget)
-        query &= Q(total_spent__gte=spent)
+        d = Filter.get_upwork_filters()
+        query = Q(avg_hour_price=0) | Q(avg_hour_price__gte=d['avh'])
+        query &= Q(budget=0) | Q(budget__gte=d['budget'])
+        query &= Q(total_spent__gte=d['spent'])
         # if change filters - change also in keyword.py
         return query
 

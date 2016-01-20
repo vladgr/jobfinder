@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^api/keywords/$', v.api_keywords),
 
     url(r'^api/jobs/$', v.api_jobs),
+    url(r'^api/jobs/check/new/$', v.api_jobs_check_new),
 
     url(r'^api/job/$', v.api_job),
     url(r'^api/job/mark/deleted/$', v.api_job_mark_deleted),

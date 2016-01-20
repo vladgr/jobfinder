@@ -67,7 +67,8 @@ class Task {
         this.apiSite = obj.apiSite;
         this.apiUrlGetTasks = this.apiSite + '/api/upwork/get/tasks/';
         this.apiUrlProcessItem = this.apiSite + '/api/upwork/process/item/';
-        
+        this.apiUrlCheckNewJobs = this.apiSite + '/api/jobs/check/new/';
+
         this.createAlarm();
         this.listenAlarm();
         this.waitResults();    
@@ -108,30 +109,58 @@ class Task {
      */
     createAlarm(){
         chrome.alarms.create('getTasks', {periodInMinutes: 1});  
+        chrome.alarms.create('checkNewJobs', {periodInMinutes: 3});  
+    }
+
+    
+    listenAlarm(){
+        chrome.alarms.onAlarm.addListener(obj => {
+            switch (obj.name) {
+                case 'getTasks':
+                    this.getTasks()
+                    break;
+                case 'checkNewJobs':
+                    this.checkNewJobs()
+                    break;
+            }
+        });
     }
 
     /**
      * Get tasks from server. Do nothing if there are
      * some previous tasks.
      */
-    listenAlarm(){
-        chrome.alarms.onAlarm.addListener(obj => {
-            if (obj.name !== 'getTasks')
-                return;
+    getTasks(){
+        if (this.hasTasks())
+            return;
                 
-            if (this.hasTasks())
-                return;
-                
-            let params = new FormData()
-            params.append('token', this.token);
-        
-            fetch(this.apiUrlGetTasks, {method: 'POST', body: params})
-                .then(response => response.json())
-                .then(data => this.tasks = data)
-                .then(() => this.processTasks());
-        });
+        let params = new FormData()
+        params.append('token', this.token);
+    
+        fetch(this.apiUrlGetTasks, {method: 'POST', body: params})
+            .then(response => response.json())
+            .then(data => this.tasks = data)
+            .then(() => this.processTasks());
     }
 
+    checkNewJobs(){
+        let params = new FormData()
+        params.append('token', this.token);
+    
+        fetch(this.apiUrlCheckNewJobs, {method: 'POST', body: params})
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.result){
+                    this.playSound();
+                }
+            });
+    }
+
+    playSound(){
+        document.write('<audio id="soundSignal"><source src="sound/sound.mp3" type="audio/mpeg"></audio>');
+        document.getElementById('soundSignal').play();
+    }
 
     /**
      * Recursive task processing until processes all urls
@@ -200,4 +229,3 @@ class Task {
 }
 
 new Task();
-

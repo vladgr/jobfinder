@@ -82,6 +82,7 @@ var Task = (function () {
             this.apiSite = obj.apiSite;
             this.apiUrlGetTasks = this.apiSite + '/api/upwork/get/tasks/';
             this.apiUrlProcessItem = this.apiSite + '/api/upwork/process/item/';
+            this.apiUrlCheckNewJobs = this.apiSite + '/api/jobs/check/new/';
 
             this.createAlarm();
             this.listenAlarm();
@@ -153,6 +154,23 @@ var Task = (function () {
         key: 'createAlarm',
         value: function createAlarm() {
             chrome.alarms.create('getTasks', { periodInMinutes: 1 });
+            chrome.alarms.create('checkNewJobs', { periodInMinutes: 3 });
+        }
+    }, {
+        key: 'listenAlarm',
+        value: function listenAlarm() {
+            var _this3 = this;
+
+            chrome.alarms.onAlarm.addListener(function (obj) {
+                switch (obj.name) {
+                    case 'getTasks':
+                        _this3.getTasks();
+                        break;
+                    case 'checkNewJobs':
+                        _this3.checkNewJobs();
+                        break;
+                }
+            });
         }
 
         /**
@@ -161,26 +179,45 @@ var Task = (function () {
          */
 
     }, {
-        key: 'listenAlarm',
-        value: function listenAlarm() {
-            var _this3 = this;
+        key: 'getTasks',
+        value: function getTasks() {
+            var _this4 = this;
 
-            chrome.alarms.onAlarm.addListener(function (obj) {
-                if (obj.name !== 'getTasks') return;
+            if (this.hasTasks()) return;
 
-                if (_this3.hasTasks()) return;
+            var params = new FormData();
+            params.append('token', this.token);
 
-                var params = new FormData();
-                params.append('token', _this3.token);
-
-                fetch(_this3.apiUrlGetTasks, { method: 'POST', body: params }).then(function (response) {
-                    return response.json();
-                }).then(function (data) {
-                    return _this3.tasks = data;
-                }).then(function () {
-                    return _this3.processTasks();
-                });
+            fetch(this.apiUrlGetTasks, { method: 'POST', body: params }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                return _this4.tasks = data;
+            }).then(function () {
+                return _this4.processTasks();
             });
+        }
+    }, {
+        key: 'checkNewJobs',
+        value: function checkNewJobs() {
+            var _this5 = this;
+
+            var params = new FormData();
+            params.append('token', this.token);
+
+            fetch(this.apiUrlCheckNewJobs, { method: 'POST', body: params }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data);
+                if (data.result) {
+                    _this5.playSound();
+                }
+            });
+        }
+    }, {
+        key: 'playSound',
+        value: function playSound() {
+            document.write('<audio id="soundSignal"><source src="sound/sound.mp3" type="audio/mpeg"></audio>');
+            document.getElementById('soundSignal').play();
         }
 
         /**
@@ -191,7 +228,7 @@ var Task = (function () {
     }, {
         key: 'processTasks',
         value: function processTasks() {
-            var _this4 = this;
+            var _this6 = this;
 
             console.log('Processing tasks...');
             console.log('Num tasks: ' + this.tasks.length);
@@ -208,18 +245,18 @@ var Task = (function () {
                 // job page.
 
                 var url = undefined;
-                var t = parseInt((Date.now() - _this4.time) / 1000);
+                var t = parseInt((Date.now() - _this6.time) / 1000);
                 if (t > 90) {
-                    url = _this4.homeUrl;
+                    url = _this6.homeUrl;
                 } else {
-                    url = _this4.tasks.pop();
+                    url = _this6.tasks.pop();
                 }
 
                 chrome.tabs.update(tabId, { url: url, active: false }, function (tab) {
-                    _this4.urlMap.set(tab.url, url);
-                    _this4.time = Date.now();
+                    _this6.urlMap.set(tab.url, url);
+                    _this6.time = Date.now();
                     setTimeout(function () {
-                        return _this4.processTasks();
+                        return _this6.processTasks();
                     }, 10000);
                 });
             });
@@ -235,27 +272,27 @@ var Task = (function () {
     }, {
         key: 'waitResults',
         value: function waitResults() {
-            var _this5 = this;
+            var _this7 = this;
 
             chrome.runtime.onMessage.addListener(function (msg, sender) {
                 if (msg.type !== 'result') {
                     return;
                 }
 
-                var url = _this5.urlMap.get(msg.url);
-                _this5.urlMap.delete(msg.url);
+                var url = _this7.urlMap.get(msg.url);
+                _this7.urlMap.delete(msg.url);
 
                 console.log(msg.url);
                 console.log(url);
 
                 var params = new FormData();
-                params.append('token', _this5.token);
+                params.append('token', _this7.token);
                 params.append('url', url);
                 params.append('html', msg.html);
 
                 console.log('Sending data to server.');
 
-                fetch(_this5.apiUrlProcessItem, { method: 'POST', body: params });
+                fetch(_this7.apiUrlProcessItem, { method: 'POST', body: params });
             });
         }
     }]);

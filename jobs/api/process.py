@@ -28,11 +28,13 @@ class ProcessIndeed:
             logger.info(message)
             return
 
+        new_jobs = False
         with transaction.atomic():
             for d in res:
                 if models.JobIndeed.objects.filter(jobkey=d['jobkey']).exists():
                     continue
 
+                new_jobs = True
                 # Get description by visiting job's page
                 try:
                     d['description'] = i.get_description(d['url'])
@@ -53,6 +55,9 @@ class ProcessIndeed:
                 d['keyword_id'] = keyword_id
 
                 models.JobIndeed.objects.create(**d)
+
+        if new_jobs:
+            models.JobIndeed.mark_new_jobs()
 
     def process(self):
         """Processes all phrases"""

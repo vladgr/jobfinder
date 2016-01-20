@@ -30,6 +30,7 @@ data.json:
 ```
 
 indeed_publisher_key - go to indeed.com, register for API and get Indeed API publisher key.
+
 api_token - set any own secret token. The same token you'll need to set in Chrome extension's options. 
 
 Chrome extension will be sending queries to Django's backend and Django will be checking token.

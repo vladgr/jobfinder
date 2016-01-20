@@ -83,6 +83,13 @@ def api_jobs(request, **kw):
 
 
 @require_POST
+@check_token
+def api_jobs_check_new(request):
+    value = models.Job.check_new_jobs()
+    return JsonResponse({'result': value})
+
+
+@require_POST
 @check_model
 @check_token
 def api_job(request, **kw):
@@ -176,5 +183,8 @@ def api_upwork_process_item(request):
 
     obj.is_processed = True
     obj.save()
+
+    if obj.check_filters():
+        models.JobUpwork.mark_new_jobs()
 
     return JsonResponse({})
